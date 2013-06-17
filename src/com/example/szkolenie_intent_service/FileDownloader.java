@@ -2,7 +2,10 @@ package com.example.szkolenie_intent_service;
 
 import android.content.Context;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 
@@ -15,6 +18,13 @@ public class FileDownloader {
         this.ctx = ctx;
     }
 
+    /**
+     * Pobiera dane z podanego adresu i zapisuje je w pliku
+     * w pamięci wewnętrznej.
+     *
+     * @param address przekształcany na url
+     * @return nazwę pliku do otworzenia za pomocą contex.openFileInput lub null w przypadku błędu
+     */
     public String downloadFile(String address) {
         try {
             URL url = new URL(address);
@@ -33,7 +43,7 @@ public class FileDownloader {
         FileOutputStream outputDataStream = ctx.openFileOutput(FILE_NAME, Context.MODE_PRIVATE);
 
         String line;
-        while((line = reader.readLine()) != null) {
+        while ((line = reader.readLine()) != null) {
             outputDataStream.write(line.getBytes());
             outputDataStream.write("\n".getBytes());
         }

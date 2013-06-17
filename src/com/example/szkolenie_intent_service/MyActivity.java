@@ -33,9 +33,13 @@ public class MyActivity extends Activity {
     }
 
     private void downloadFile(String text) {
-        new FileDownloadTask().execute(text);
+        //TODO: zaimeplemntuj mnie
     }
 
+    /**
+     * Otwiera plik, którego nazwa zwracana jest przez FileDownloader
+     * @param fileName
+     */
     private void readFileAndDisplayContent(String fileName) {
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(openFileInput(fileName)));
@@ -53,20 +57,4 @@ public class MyActivity extends Activity {
         }
     }
 
-
-    private class FileDownloadTask extends AsyncTask<String, Void, String> {
-
-        @Override
-        protected String doInBackground(String... params) {
-            String url = params[0];
-            FileDownloader d = new FileDownloader(MyActivity.this);
-            return d.downloadFile(url);
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            readFileAndDisplayContent(s);
-        }
-
-    }
 }
