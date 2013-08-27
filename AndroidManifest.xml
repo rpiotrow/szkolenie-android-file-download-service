@@ -17,5 +17,6 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <service android:name="com.example.szkolenie_intent_service.FileDownloadService" />
     </application>
 </manifest>

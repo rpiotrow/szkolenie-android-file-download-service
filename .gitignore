@@ -1,5 +1,6 @@
-*.iml
-.idea/
+.classpath
+.gitignore.swp
+.project
+.settings/
+bin/
 out/
-gen/
-*.swp
